@@ -6,6 +6,7 @@ import { Grid, Typography, Card, CardActionArea, CardContent, Tooltip } from '@m
 import Loader from "react-loader-spinner";
 import { Link } from 'react-router-dom'
 import { ArrowBackIos } from '@material-ui/icons';
+import { Helmet } from 'react-helmet-async';
 
 const useStyles = makeStyles({
     root: {
@@ -42,6 +43,7 @@ function SingleRes({ data }) {
 
     return (
         <>
+
             <Tooltip title="Back to Home">
                 <Link to="/">
                     <ArrowBackIos />
@@ -58,35 +60,40 @@ function SingleRes({ data }) {
                         timeout={3000} //3 secs
                     />
                     :
-                    <Grid container spacing={0}
-                        direction="column"
-                        alignItems="center"
-                        style={{ minHeight: '100vh' }}>
-                        <Grid item xs={6}>
-                            <Card className={classes.root}>
-                                <CardActionArea>
-                                    <img src={singleResData.image} alt={singleResData.name} />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Name: {singleResData.name}
-                                        </Typography>
-                                        <Typography gutterBottom variant="h6" component="h2" color={singleResData.status === 'Alive' ? 'Primary' : 'Secondary'}>
-                                            Status: {singleResData.status}
-                                        </Typography>
-                                        <Typography gutterBottom variant="h6" component="h2">
-                                            Pecies: {singleResData.species}
-                                        </Typography>
-                                        <Typography gutterBottom variant="h6" component="h2">
-                                            Gender: {singleResData.gender}
-                                        </Typography>
-                                        <Typography gutterBottom variant="h6" component="h2">
-                                            Location: {singleResData.origin.name}
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                            </Card>
+                    <>
+                        <Helmet>
+                            <title>{singleResData.name}</title>
+                        </Helmet>
+                        <Grid container spacing={0}
+                            direction="column"
+                            alignItems="center"
+                            style={{ minHeight: '100vh' }}>
+                            <Grid item xs={6}>
+                                <Card className={classes.root}>
+                                    <CardActionArea>
+                                        <img src={singleResData.image} alt={singleResData.name} />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                Name: {singleResData.name}
+                                            </Typography>
+                                            <Typography gutterBottom variant="h6" component="h2" color={singleResData.status === 'Alive' ? 'Primary' : 'Secondary'}>
+                                                Status: {singleResData.status}
+                                            </Typography>
+                                            <Typography gutterBottom variant="h6" component="h2">
+                                                Pecies: {singleResData.species}
+                                            </Typography>
+                                            <Typography gutterBottom variant="h6" component="h2">
+                                                Gender: {singleResData.gender}
+                                            </Typography>
+                                            <Typography gutterBottom variant="h6" component="h2">
+                                                Location: {singleResData.origin.name}
+                                            </Typography>
+                                        </CardContent>
+                                    </CardActionArea>
+                                </Card>
+                            </Grid>
                         </Grid>
-                    </Grid>
+                    </>
             }
         </>
     )
