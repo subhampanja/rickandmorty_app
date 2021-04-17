@@ -37,7 +37,7 @@ function SingleRes({ data }) {
         }
 
         data()
-    }, [])
+    }, [id])
 
 
     return (
