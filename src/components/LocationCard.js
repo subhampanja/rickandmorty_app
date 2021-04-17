@@ -3,6 +3,7 @@ import { Grid, Card, CardContent, Typography, Box, Dialog, AppBar, Toolbar, Icon
 import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import Resident from './Resident';
+import "./main.css";
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -47,7 +48,7 @@ function LocationCard({ data }) {
 
     return (
         <>
-            <Grid item xs={3} onClick={() => locationClick(data.id)}>
+            <Grid item xs={3} onClick={() => locationClick(data.id)}  className="locationCard">
                 <Box boxShadow={8}>
                     <Card>
                         <CardContent>
@@ -67,15 +68,15 @@ function LocationCard({ data }) {
                             <CloseIcon />
                         </IconButton>
                         <Typography variant="h6" className={classes.title}>
-
+                            Planet: {data.name}
                         </Typography>
                     </Toolbar>
                 </AppBar>
                 <Grid container spacing={1}>
                     {
-                        dataMain.map(data => (
+                        dataMain.map(dataRes => (
 
-                            <Resident key={data.name} data={data} />
+                            <Resident key={dataRes.id} data={dataRes} planet={data} />
 
                         ))
                     }

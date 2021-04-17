@@ -1,0 +1,14 @@
+.resident:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+.resident{
+    cursor: pointer;
+}
+.locationCard{
+    cursor: pointer;
+}
+.locationCard:hover{
+    transform: scale(1.05);
+    transition: 0.2s ease-in-out;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
 import LocationCard from './LocationCard';
+import {Helmet} from "react-helmet-async"
 
 const Home = () => {
 
@@ -27,10 +28,14 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Rick and Marty Application</title>
+            </Helmet>
+            
             <Grid container spacing={1}>
                 {
                     allLocation.map(location => (
-                        <LocationCard key={location.id} data={location}/>
+                        <LocationCard key={location.id} data={location} />
                     ))
                 }
             </Grid>
